@@ -6,15 +6,15 @@ app = FastAPI()
 # Определение базового маршрута
 @app.get("/")
 async def root():
-    return {"Главная страница"}
+    return "Главная страница"
 @app.get("/user/admin")
 async def admin():
-    return {"Вы вошли как администратор"}
+    return "Вы вошли как администратор"
 
 @app.get("/user/{password}")
-async def news(password: int) -> dict:
-    return {"message": f"Вы вошди как пользователь № {password}"}
+async def news(password: int) -> str:
+    return f"Вы вошди как пользователь № {password}"
 
-@app.get("/users")
-async def user(username: str, age: int) -> dict:
-     return {"Информация о пользователе. Имя": username, "Возраст": age}
+@app.get("/user")
+async def user(username: str, age: int) -> str:
+     return f"Информация о пользователе. Имя: {username}, Возраст: {age}"
